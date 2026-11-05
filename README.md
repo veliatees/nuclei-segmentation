@@ -2,7 +2,7 @@
 
 A small study on the nuclei images of the 2018 Data Science Bowl (BBBC038). I train a U-Net that finds every nucleus in an image, compare its output with the expert masks for each image type, and test one practical question: can the model's own uncertainty point to the images that need a second look by a person?
 
-Status: step 1 (data check) is done. The training notebook (02) and the evaluation notebook (03) are ready; the U-Net class in 02 is the part I write myself, and training on a Kaggle GPU comes next. The plan, with the hypotheses, is in `docs/plan.md` and was written before any training. Progress is logged in `docs/progress.md`.
+Status: step 1 (data check) is done. The training notebook (02), including the U-Net, and the evaluation notebook (03) are ready; training on a Kaggle GPU comes next. Notebook 03b compares a pretrained generalist model (Cellpose-SAM, no training on this data) on the same images and metrics. The plan, with the hypotheses, is in `docs/plan.md` and was written before any training. Progress is logged in `docs/progress.md`.
 
 ## Data
 
@@ -22,6 +22,7 @@ On Kaggle: import a notebook from `notebooks/`, set Internet to on and use Save 
 notebooks/01_data_check.ipynb   image types, nuclei per image, nucleus size, touching nuclei, train/val split
 notebooks/02_unet.ipynb         three-class U-Net (background, interior, boundary) trained on random crops
 notebooks/03_evaluation.ipynb   single nuclei from the pixel classes, DSB score per image type, merges and splits, uncertainty test
+notebooks/03b_cellpose_baseline.ipynb  Cellpose-SAM without training on this data, same validation images and metrics, paired comparison with the U-Net
 docs/plan.md                    question, steps and hypotheses
 docs/progress.md                what is done and what comes next
 results/                        tables and figures from the notebooks
