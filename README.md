@@ -16,6 +16,8 @@ The images are not part of this repository. The notebooks download them.
 
 On Kaggle: import a notebook from `notebooks/`, set Internet to on and use Save Version > Save & Run All. Notebook 01 runs on CPU; notebooks 02 and 03 need a GPU. Notebook 03 also needs the saved output of notebook 02 (+ Add Input > Your Work), because it loads the trained weights.
 
+Or all three in a row from your own computer with the Kaggle API: `python scripts/run_on_kaggle.py`. It runs 02, 03 and 03b one after the other on Kaggle GPUs, passes each output on to the next notebook and downloads the results into `runs/`. The one-time setup is at the top of the script.
+
 ## Layout
 
 ```
@@ -23,6 +25,7 @@ notebooks/01_data_check.ipynb   image types, nuclei per image, nucleus size, tou
 notebooks/02_unet.ipynb         three-class U-Net (background, interior, boundary) trained on random crops
 notebooks/03_evaluation.ipynb   single nuclei from the pixel classes, DSB score per image type, merges and splits, uncertainty test
 notebooks/03b_cellpose_baseline.ipynb  Cellpose-SAM without training on this data, same validation images and metrics, paired comparison with the U-Net
+scripts/run_on_kaggle.py        runs 02 -> 03 -> 03b on Kaggle and downloads the results
 docs/plan.md                    question, steps and hypotheses
 docs/progress.md                what is done and what comes next
 results/                        tables and figures from the notebooks
