@@ -1,0 +1,4 @@
+type,missed_merged,missed_cut,missed_not_found,missed_bad_outline,extra_merged,extra_cut,extra_false_alarm,extra_bad_outline,all_errors,merged_or_cut,share_merged_or_cut
+fluorescence,764,10,166,84,187,47,127,73,1458,1008,0.691
+histology,79,68,291,186,27,204,205,170,1230,378,0.307
+all,843,78,457,270,214,251,332,243,2688,1386,0.516

@@ -1,0 +1,27 @@
+{
+  "h3b_nucleus_area_entropy": {
+    "n_images": 65,
+    "k": 7,
+    "caught": 6,
+    "expected_by_chance": 0.75,
+    "p_value": 5.846100527418815e-07,
+    "spearman_rho": -0.7306381118881119,
+    "spearman_p": 4.900875540470225e-12,
+    "missed": [
+      19
+    ],
+    "missed_ids": [
+      "3c4c675825f7509877bc10497f498c9a2e3433bf922bd870914a2eb21a54fd26"
+    ]
+  },
+  "h3b_holds": true,
+  "whole_image_entropy_for_comparison": {
+    "n_images": 65,
+    "k": 7,
+    "caught": 1,
+    "expected_by_chance": 0.75,
+    "p_value": 0.5681152470668376,
+    "spearman_rho": -0.5441433566433566,
+    "spearman_p": 2.7983869330532056e-06
+  }
+}

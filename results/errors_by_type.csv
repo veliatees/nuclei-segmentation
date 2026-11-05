@@ -1,0 +1,5 @@
+type,missed_merged,missed_cut,missed_not_found,missed_bad_outline,extra_merged,extra_cut,extra_false_alarm,extra_bad_outline,all_errors,merged_or_cut,share_merged_or_cut
+brightfield,68,2,7,11,22,8,68,11,197,100,0.508
+fluorescence,485,12,94,54,146,40,100,52,983,683,0.695
+histology,255,7,21,22,67,30,45,22,469,359,0.765
+all,808,21,122,87,235,78,213,85,1649,1142,0.693
