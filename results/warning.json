@@ -1,0 +1,46 @@
+{
+  "planned_whole_image_entropy": {
+    "n_images": 134,
+    "k": 14,
+    "caught": 3,
+    "expected_by_chance": 1.46,
+    "p_value": 0.16455477138304378,
+    "spearman_rho": -0.5852865995835359,
+    "spearman_p": 1.1115617397712018e-13,
+    "missed": [
+      5,
+      20,
+      25,
+      32,
+      50,
+      61,
+      65,
+      69,
+      76,
+      98,
+      100
+    ],
+    "missed_ids": [
+      "15039b3acccc4257a1a442646a89b6e596b5eb4531637e6d8fa1c43203722c99",
+      "2bf594e9d06f78b4b79d7ffb395497a0a91126b6b0d710d7a9cee21f5c3bd177",
+      "3594684b9ea0e16196f498815508f8d364d55fea2933a2e782122b6f00375d04",
+      "40946065f7e4b6038599fbfd419f2a67e7635b6f89db3ed6c0d67c8801521af1",
+      "5ef4442e5b8b0b4cf824b61be4050dfd793d846e0a6800afa4425a2f66e91456",
+      "7f38885521586fc6011bef1314a9fb2aa1e4935bd581b2991e1d963395eab770",
+      "87ea72894f6534b28e740cc34cf5c9eb75d0d8902687fce5fcc08a92e9f41386",
+      "8e507d58f4c27cd2a82bee79fe27b069befd62a46fdaed20970a95a2ba819c7b",
+      "9fb32aba1c2fd53273dca9abefac944ba747f578da82dfaa1249f332a2324944",
+      "bf4a61bb81589c9a67e3343408befd3e135af5e88b50c17f998f2131d24bc271",
+      "c0152b1a260e71f9823d17f4fbb4bf7020d5dce62b4a12b3099c1c8e52a1c43a"
+    ]
+  },
+  "extra_nucleus_area_entropy": {
+    "n_images": 134,
+    "k": 14,
+    "caught": 8,
+    "expected_by_chance": 1.46,
+    "p_value": 3.3239132003723295e-06,
+    "spearman_rho": -0.7459120437910697,
+    "spearman_p": 4.656082552485064e-25
+  }
+}

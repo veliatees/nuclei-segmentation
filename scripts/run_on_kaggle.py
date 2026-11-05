@@ -1,19 +1,21 @@
-"""Run the whole study on Kaggle with one command: 02 (train) -> 03 (evaluate) -> 03b (Cellpose-SAM baseline).
+"""Run the whole study on Kaggle with one command: 02 (train) -> 03 (evaluate) -> 03b (Cellpose-SAM baseline) -> 04 (test set).
 
 One-time setup on your computer:
   1. pip install kaggle
-  2. kaggle.com -> your profile -> Settings -> API -> "Create New Token".
+  2. kaggle.com/settings/api -> "Legacy API Credentials" -> "Create Legacy API Key".
      This downloads kaggle.json. Move it to ~/.kaggle/kaggle.json and run: chmod 600 ~/.kaggle/kaggle.json
+     (A new-style token or "kaggle auth login" also works; then the script asks for your user name.)
 
 Then, from the repository folder:
-  python scripts/run_on_kaggle.py            # all three notebooks, one after the other
-  python scripts/run_on_kaggle.py 03 03b     # only some of them (02 must have run once before 03)
+  python scripts/run_on_kaggle.py            # all notebooks, one after the other
+  python scripts/run_on_kaggle.py 03 04      # only some of them (02 must have run once before 03 and 04)
 
 Every notebook runs as a private Kaggle notebook with GPU and internet on. Each one gets the output
 of the notebook before it as input, so nothing has to be downloaded and uploaded by hand.
 The outputs land in runs/<date-time>/<notebook>/ and the key result files are printed at the end.
 """
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -28,8 +30,10 @@ STEPS = {  # name: (notebook, kaggle slug, step whose output it needs)
     "02": ("notebooks/02_unet.ipynb", "nuclei-02-unet", None),
     "03": ("notebooks/03_evaluation.ipynb", "nuclei-03-evaluation", "02"),
     "03b": ("notebooks/03b_cellpose_baseline.ipynb", "nuclei-03b-cellpose-baseline", "03"),
+    "04": ("notebooks/04_test_set.ipynb", "nuclei-04-test-set", "02"),
 }
-SHOW = ["by_type.csv", "warning.json", "by_type_cellpose.csv", "compare.csv"]
+SHOW = ["by_type.csv", "errors_by_type.csv", "warning.json", "by_type_cellpose.csv", "compare.csv",
+        "by_type_test.csv", "errors_by_type_test.csv", "test_warning.json"]
 POLL_SECONDS = 60
 MAX_HOURS = 4
 
@@ -44,10 +48,17 @@ def kaggle(*args):
 
 
 def username():
+    # the Kaggle CLI logs in by itself (kaggle.json, access_token or "kaggle auth login");
+    # this script only needs your user name to build the notebook address
+    if os.environ.get("KAGGLE_USERNAME"):
+        return os.environ["KAGGLE_USERNAME"]
     cfg = Path.home() / ".kaggle" / "kaggle.json"
-    if not cfg.exists():
-        sys.exit(f"{cfg} not found - see the setup steps at the top of this file")
-    return json.loads(cfg.read_text())["username"]
+    if cfg.exists():
+        return json.loads(cfg.read_text())["username"]
+    name = input("Kaggle user name (as in kaggle.com/<name>): ").strip()
+    if not name:
+        sys.exit("no user name given")
+    return name
 
 
 def push(user, step):

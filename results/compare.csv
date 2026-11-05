@@ -1,0 +1,5 @@
+type,images,ap_unet,ap_cellpose,unet_better,cellpose_better,p_value
+brightfield,3,0.2838,0.4841,0,3,
+fluorescence,109,0.5956,0.6529,33,76,0.0001
+histology,22,0.2764,0.4778,0,22,0.0
+all,134,0.5362,0.6204,33,101,0.0
